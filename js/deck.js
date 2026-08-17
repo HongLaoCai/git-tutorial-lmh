@@ -65,6 +65,7 @@
     const next = Math.max(0, Math.min(total - 1, i));
     slides.forEach((s, j) => s.classList.toggle("is-active", j === next));
     index = next;
+    slides[index].scrollTop = 0;
     if (pushHash) {
       history.replaceState(null, "", `#slide-${index + 1}`);
     }
