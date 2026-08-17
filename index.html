@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Git Tutorial — hướng dẫn chi tiết cho người mới theo tài liệu nội bộ" />
-  <title>Git Tutorial · Docs cho người mới</title>
+  <meta name="description" content="Git Tutorial — hướng dẫn chi tiết cho người mới: khái niệm, xác thực GitLab, lệnh thường dùng và các tình huống hay gặp." />
+  <title>Git Tutorial · Hướng dẫn cho người mới</title>
   <link rel="stylesheet" href="css/slides.css" />
 </head>
 <body>
@@ -16,136 +16,223 @@
 
   <div class="sr-live" id="sr-live" aria-live="polite" aria-atomic="true"></div>
 
-  <main id="deck" class="deck" role="region" aria-label="Git Tutorial docs" aria-roledescription="carousel">
+  <main id="deck" class="deck" role="region" aria-label="Git Tutorial" aria-roledescription="carousel">
 
     <!-- 1 -->
     <section class="slide slide--center is-active" id="slide-1" role="region" aria-roledescription="slide" aria-label="Tiêu đề">
-      <div class="brand-row" aria-hidden="true">
-        <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="80" cy="208" r="24"/><circle cx="80" cy="48" r="24"/><circle cx="208" cy="128" r="24"/>
-          <path d="M80 72v112M104 208l80-56M104 48l80 56"/>
-        </svg>
+      <div class="slide__inner">
+        <div class="brand-row" aria-hidden="true">
+          <svg viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="80" cy="208" r="24"/><circle cx="80" cy="48" r="24"/><circle cx="208" cy="128" r="24"/>
+            <path d="M80 72v112M104 208l80-56M104 48l80 56"/>
+          </svg>
+        </div>
+        <p class="kicker">Study 2026 · Hướng dẫn</p>
+        <h1>Git Tutorial</h1>
+        <p class="doc-lead">Từ khái niệm cốt lõi đến xác thực GitLab, lệnh hàng ngày và các tình huống hay gặp khi làm việc nhóm.</p>
+        <p class="doc-lead" style="margin-top:8px">Điều khiển: <kbd>→</kbd> / Space · <kbd>←</kbd> · <kbd>O</kbd> mục lục · <kbd>?</kbd> phím tắt</p>
       </div>
-      <p class="kicker">Study 2026 · Hướng dẫn</p>
-      <h1>Git Tutorial</h1>
-      <p class="doc-lead">Tài liệu chi tiết cho người mới: đăng nhập GitLab, PAT, SSH, lệnh thường dùng và các tình huống hay gặp.</p>
-      <p class="doc-lead" style="margin-top:8px">Điều khiển: <kbd>→</kbd> / Space · <kbd>←</kbd> · <kbd>O</kbd> mục lục · <kbd>?</kbd> phím tắt</p>
     </section>
 
     <!-- 2 -->
-    <section class="slide" id="slide-2" role="region" aria-roledescription="slide" aria-label="Mục lục">
-      <p class="kicker">Mục lục</p>
-      <h2>Bạn sẽ học những gì</h2>
-      <p class="doc-lead">Đọc theo thứ tự. Mỗi phần có giải thích + lệnh đúng theo tut.</p>
-      <div class="toc">
-        <div class="toc__item"><span class="toc__num">Phần A</span><strong>Vào repo &amp; xác thực</strong><span>Quyền GitLab · PAT · SSH · Clone</span></div>
-        <div class="toc__item"><span class="toc__num">Phần B</span><strong>Lệnh thường dùng</strong><span>fetch, pull, add, commit, branch, merge…</span></div>
-        <div class="toc__item"><span class="toc__num">Phần C</span><strong>Tình huống 2 → 10</strong><span>Quên branch, pull kẹt, amend, conflict…</span></div>
-        <div class="toc__item"><span class="toc__num">Phần D</span><strong>Đổi tên / xóa branch</strong><span>Các lệnh quản lý nhánh</span></div>
+    <section class="slide" id="slide-2" role="region" aria-roledescription="slide" aria-label="Git là gì">
+      <div class="slide__inner">
+        <p class="kicker">Giới thiệu</p>
+        <h2>Git là gì?</h2>
+        <p class="doc-lead">Git là hệ thống quản lý phiên bản (Version Control). Mỗi lần lưu có chủ đích gọi là <strong>commit</strong> — Git ghi lại ai đổi gì, lúc nào, và vì sao.</p>
+        <div class="concept">
+          <div class="concept__card">
+            <h3>Lịch sử đầy đủ</h3>
+            <p>Quay lại bất kỳ mốc đã commit. Không phụ thuộc vào “bản cuối cùng trên máy”.</p>
+          </div>
+          <div class="concept__card">
+            <h3>Làm việc song song</h3>
+            <p>Mỗi tính năng một nhánh (branch). Team không ghi đè code của nhau khi đang làm dở.</p>
+          </div>
+          <div class="concept__card">
+            <h3>Phối hợp qua remote</h3>
+            <p>Đẩy lên GitLab / GitHub để review, merge request, và backup ngoài máy cá nhân.</p>
+          </div>
+        </div>
+        <p class="callout callout--tip"><strong>Ghi nhớ</strong>Git chạy trên máy bạn. GitLab là máy chủ lưu repo từ xa — hai thứ khác nhau.</p>
       </div>
     </section>
 
     <!-- 3 -->
-    <section class="slide" id="slide-3" role="region" aria-roledescription="slide" aria-label="Quyền GitLab">
-      <p class="kicker">Phần A · Bước 1</p>
-      <h2>Được add vào repo GitLab</h2>
-      <p class="doc-lead">Trước khi clone / push, tài khoản của bạn phải có quyền trên repo.</p>
-      <ol class="steps">
-        <li>
-          <span class="steps__n">1</span>
-          <div class="steps__body">
-            <h3>Đăng nhập GitLab</h3>
-            <p>Đăng nhập tài khoản GitLab trên trình duyệt.</p>
+    <section class="slide" id="slide-3" role="region" aria-roledescription="slide" aria-label="Ba khái niệm cốt lõi">
+      <div class="slide__inner">
+        <p class="kicker">Giới thiệu</p>
+        <h2>Ba khái niệm cần thuộc</h2>
+        <div class="concept">
+          <div class="concept__card">
+            <h3>Repository</h3>
+            <p>Kho chứa toàn bộ file và lịch sử. Local = trên máy. Remote = trên GitLab.</p>
           </div>
-        </li>
-        <li>
-          <span class="steps__n">2</span>
-          <div class="steps__body">
-            <h3>Admin add bạn vào repo</h3>
-            <p>Tài khoản được add vào project / group.</p>
+          <div class="concept__card">
+            <h3>Commit</h3>
+            <p>Một mốc lưu có message và mã hash. Commit xong mới “chốt” thay đổi vào lịch sử.</p>
           </div>
-        </li>
-        <li>
-          <span class="steps__n">3</span>
-          <div class="steps__body">
-            <h3>Admin cấp quyền</h3>
-            <p>Có quyền rồi mới clone, pull, push được.</p>
+          <div class="concept__card">
+            <h3>Branch</h3>
+            <p>Một dòng phát triển độc lập. <code>main</code> là nhánh chuẩn; tính năng mới làm trên nhánh riêng.</p>
           </div>
-        </li>
-      </ol>
-      <p class="callout callout--tip"><strong>Ghi nhớ</strong>Chưa được cấp quyền thì dù có token / SSH cũng không vào được repo.</p>
+        </div>
+      </div>
     </section>
 
     <!-- 4 -->
-    <section class="slide" id="slide-4" role="region" aria-roledescription="slide" aria-label="Tạo PAT">
-      <p class="kicker">Phần A · Bước 2</p>
-      <h2>Tạo token PAT</h2>
-      <p class="doc-lead">PAT (Personal Access Token) dùng để xác thực khi làm việc với Git qua HTTPS.</p>
-      <ul>
-        <li>Tạo token PAT trên GitLab (Access Tokens).</li>
-        <li>Copy token một lần — cần giữ an toàn.</li>
-      </ul>
-      <p class="callout callout--warn"><strong>Lưu ý trong tut</strong>Khi đăng nhập Git trên web mà không dùng PAT, hệ thống vẫn yêu cầu xác thực trên web; token cũng sẽ được lưu lại trên máy.</p>
-      <pre><code># Ví dụ dạng token (GIẢ — không dùng token thật trên slide)
-glpat-xxxxxxxxxxxxxxxxxxxx</code></pre>
+    <section class="slide" id="slide-4" role="region" aria-roledescription="slide" aria-label="Vòng đời thay đổi">
+      <div class="slide__inner">
+        <p class="kicker">Giới thiệu</p>
+        <h2>Thay đổi đi từ máy lên remote như thế nào</h2>
+        <p class="doc-lead">Luôn đi theo bốn bước này. Sai bước là nguyên nhân của hầu hết lỗi pull / push.</p>
+        <div class="flow">
+          <div class="flow__step">
+            <span class="flow__n">01</span>
+            <strong>Working</strong>
+            <p>File đang sửa trên máy, chưa đưa vào Git.</p>
+          </div>
+          <div class="flow__step">
+            <span class="flow__n">02</span>
+            <strong>Staging</strong>
+            <p>Chọn file sẽ nằm trong commit tiếp theo.</p>
+            <span class="flow__cmd">git add</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__n">03</span>
+            <strong>Local repo</strong>
+            <p>Lưu thành một commit trên máy.</p>
+            <span class="flow__cmd">git commit</span>
+          </div>
+          <div class="flow__step">
+            <span class="flow__n">04</span>
+            <strong>Remote</strong>
+            <p>Đồng bộ lên GitLab cho team.</p>
+            <span class="flow__cmd">git push</span>
+          </div>
+        </div>
+        <p class="callout"><strong>Chiều ngược lại</strong><code>git fetch</code> chỉ tải thông tin mới. <code>git pull</code> tải rồi hợp nhất vào nhánh hiện tại.</p>
+      </div>
     </section>
 
     <!-- 5 -->
-    <section class="slide" id="slide-5" role="region" aria-roledescription="slide" aria-label="SSH keys">
-      <p class="kicker">Phần A · SSH</p>
-      <h2>Dùng SSH keys</h2>
-      <p class="doc-lead">Ngoài PAT, có thể dùng SSH keys để xác thực với GitLab.</p>
-
-      <p class="subhead">1. Xem danh sách SSH key trên máy</p>
-      <pre><code>ls -la ~/.ssh</code></pre>
-
-      <p class="subhead">2. Tạo SSH key mới</p>
-      <pre><code>ssh-keygen -t ed25519 -C "your.email@example.com"</code></pre>
-      <p class="callout callout--warn"><strong>Passphrase</strong>Lúc tạo key có thể có pass — cần nhớ pass.</p>
-
-      <p class="subhead">3. Xem nội dung key (public)</p>
-      <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
-      <p>Copy nội dung file <code>.pub</code> rồi dán vào GitLab → SSH Keys.</p>
-
-      <p class="subhead">4. Khi bị hỏi pass nhiều lần (macOS)</p>
-      <pre><code>ssh-add --apple-use-keychain ~/.ssh/id_ed25519</code></pre>
+    <section class="slide" id="slide-5" role="region" aria-roledescription="slide" aria-label="Mục lục">
+      <div class="slide__inner">
+        <p class="kicker">Mục lục</p>
+        <h2>Nội dung buổi học</h2>
+        <p class="doc-lead">Đi theo thứ tự. Mỗi phần có giải thích ngắn và lệnh dùng được ngay.</p>
+        <div class="toc">
+          <div class="toc__item"><span class="toc__num">Phần 0</span><strong>Git là gì</strong><span>Repo · commit · branch · remote</span></div>
+          <div class="toc__item"><span class="toc__num">Phần A</span><strong>Vào repo &amp; xác thực</strong><span>Quyền GitLab · PAT · SSH · Clone</span></div>
+          <div class="toc__item"><span class="toc__num">Phần B</span><strong>Lệnh thường dùng</strong><span>fetch, pull, add, commit, branch, merge</span></div>
+          <div class="toc__item"><span class="toc__num">Phần C</span><strong>Tình huống 2 → 10</strong><span>Quên branch, pull kẹt, amend, conflict</span></div>
+          <div class="toc__item"><span class="toc__num">Phần D</span><strong>Đổi tên / xóa branch</strong><span>Các lệnh quản lý nhánh</span></div>
+        </div>
+      </div>
     </section>
 
     <!-- 6 -->
-    <section class="slide" id="slide-6" role="region" aria-roledescription="slide" aria-label="Clone và set PAT">
-      <p class="kicker">Phần A · Clone repo</p>
-      <h2>Clone repo + gắn PAT vào remote</h2>
-      <p class="doc-lead">Theo tut: clone bằng HTTPS kèm username + PAT, rồi set remote để sau không phải nhập lại.</p>
-
-      <p class="subhead">1. Clone repo (ví dụ study 2026)</p>
-      <pre><code>git clone https://USERNAME:glpat-xxxxxxxx@gitlab.com/group/studybooks-2026</code></pre>
-
-      <p class="subhead">2. Set PAT vào remote để sau không phải nhập</p>
-      <pre><code>git remote set-url origin https://USERNAME:glpat-xxxxxxxx@gitlab.com/group/studybooks-2026.git</code></pre>
-
-      <p class="subhead">3. Check lại</p>
-      <p>Sau khi set-url, kiểm tra remote. Màn hình sẽ hiển thị dạng:</p>
-      <pre><code>origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (fetch)
-origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (push)</code></pre>
-      <p class="callout callout--warn"><strong>Bảo mật</strong>Không đưa token thật lên slide, chat hay commit. Token trong remote URL nằm plaintext trong máy.</p>
+    <section class="slide" id="slide-6" role="region" aria-roledescription="slide" aria-label="Quyền GitLab">
+      <div class="slide__inner">
+        <p class="kicker">Phần A · Bước 1</p>
+        <h2>Được add vào repo GitLab</h2>
+        <p class="doc-lead">Trước khi clone / push, tài khoản phải có quyền trên project.</p>
+        <ol class="steps">
+          <li>
+            <span class="steps__n">1</span>
+            <div class="steps__body">
+              <h3>Đăng nhập GitLab</h3>
+              <p>Đăng nhập tài khoản trên trình duyệt.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__n">2</span>
+            <div class="steps__body">
+              <h3>Admin add vào repo</h3>
+              <p>Tài khoản được thêm vào project hoặc group.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__n">3</span>
+            <div class="steps__body">
+              <h3>Admin cấp quyền</h3>
+              <p>Có quyền rồi mới clone, pull, push được.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="callout callout--tip"><strong>Ghi nhớ</strong>Chưa được cấp quyền thì PAT hay SSH cũng không vào được repo.</p>
+      </div>
     </section>
 
     <!-- 7 -->
-    <section class="slide" id="slide-7" role="region" aria-roledescription="slide" aria-label="git fetch">
-      <p class="kicker">Phần B · Lệnh thường dùng</p>
-      <h2>git fetch là gì?</h2>
-      <p class="doc-lead">Theo đúng định nghĩa trong tut:</p>
-      <p class="callout"><strong>git fetch</strong>Tải toàn bộ thông tin, dữ liệu và lịch sử thay đổi mới nhất từ kho lưu trữ từ xa (Remote như GitHub, GitLab) về máy tính của bạn, nhưng <strong>KHÔNG</strong> tự động hợp nhất (merge) hay thay đổi code hiện tại trong project của bạn.</p>
-      <pre><code>git fetch</code></pre>
-      <p class="callout callout--tip"><strong>Công thức trong tut</strong><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></p>
+    <section class="slide" id="slide-7" role="region" aria-roledescription="slide" aria-label="Tạo PAT">
+      <div class="slide__inner">
+        <p class="kicker">Phần A · Bước 2</p>
+        <h2>Tạo token PAT</h2>
+        <p class="doc-lead">PAT (Personal Access Token) dùng để xác thực Git qua HTTPS trên terminal.</p>
+        <ul>
+          <li>Tạo token trên GitLab → Access Tokens.</li>
+          <li>Copy token một lần và lưu an toàn — GitLab không hiện lại.</li>
+        </ul>
+        <p class="callout callout--warn"><strong>Lưu ý</strong>Đăng nhập Git trên trình duyệt cũng xác thực và lưu thông tin trên máy. PAT dành cho thao tác trên terminal.</p>
+        <pre><code>glpat-xxxxxxxxxxxxxxxxxxxx</code></pre>
+      </div>
     </section>
 
     <!-- 8 -->
-    <section class="slide" id="slide-8" role="region" aria-roledescription="slide" aria-label="Lệnh hàng ngày">
-      <p class="kicker">Phần B · Lệnh thường dùng</p>
-      <h2>Bộ lệnh dùng hàng ngày</h2>
-      <p class="doc-lead">Học thuộc vòng lặp này trước khi làm tình huống nâng cao.</p>
-      <pre><code>git pull
+    <section class="slide" id="slide-8" role="region" aria-roledescription="slide" aria-label="SSH keys">
+      <div class="slide__inner">
+        <p class="kicker">Phần A · SSH</p>
+        <h2>Dùng SSH keys</h2>
+        <p class="doc-lead">Ngoài PAT, có thể xác thực GitLab bằng SSH.</p>
+        <p class="subhead">1. Xem danh sách key trên máy</p>
+        <pre><code>ls -la ~/.ssh</code></pre>
+        <p class="subhead">2. Tạo SSH key mới</p>
+        <pre><code>ssh-keygen -t ed25519 -C "your.email@example.com"</code></pre>
+        <p class="callout callout--warn"><strong>Passphrase</strong>Khi tạo key có thể đặt mật khẩu — cần nhớ để dùng lại.</p>
+        <p class="subhead">3. Xem nội dung key công khai</p>
+        <pre><code>cat ~/.ssh/id_ed25519.pub</code></pre>
+        <p>Copy nội dung file <code>.pub</code>, dán vào GitLab → SSH Keys.</p>
+        <p class="subhead">4. macOS hỏi passphrase nhiều lần</p>
+        <pre><code>ssh-add --apple-use-keychain ~/.ssh/id_ed25519</code></pre>
+      </div>
+    </section>
+
+    <!-- 9 -->
+    <section class="slide" id="slide-9" role="region" aria-roledescription="slide" aria-label="Clone và set PAT">
+      <div class="slide__inner">
+        <p class="kicker">Phần A · Clone repo</p>
+        <h2>Clone repo và gắn PAT vào remote</h2>
+        <p class="doc-lead">Clone bằng HTTPS kèm username + PAT, rồi set remote để lần sau không nhập lại.</p>
+        <p class="subhead">1. Clone repo</p>
+        <pre><code>git clone https://USERNAME:glpat-xxxxxxxx@gitlab.com/group/studybooks-2026</code></pre>
+        <p class="subhead">2. Gắn PAT vào remote</p>
+        <pre><code>git remote set-url origin https://USERNAME:glpat-xxxxxxxx@gitlab.com/group/studybooks-2026.git</code></pre>
+        <p class="subhead">3. Kiểm tra</p>
+        <pre><code>origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (fetch)
+origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (push)</code></pre>
+        <p class="callout callout--warn"><strong>Bảo mật</strong>Không đưa token thật lên slide, chat hay commit. Token trong remote URL nằm plaintext trên máy.</p>
+      </div>
+    </section>
+
+    <!-- 10 -->
+    <section class="slide" id="slide-10" role="region" aria-roledescription="slide" aria-label="git fetch">
+      <div class="slide__inner">
+        <p class="kicker">Phần B · Lệnh thường dùng</p>
+        <h2>git fetch là gì?</h2>
+        <p class="callout"><strong>git fetch</strong>Tải thông tin, dữ liệu và lịch sử mới nhất từ remote về máy — <strong>không</strong> merge, không đổi code đang làm.</p>
+        <pre><code>git fetch</code></pre>
+        <p class="callout callout--tip"><strong>Công thức</strong><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></p>
+      </div>
+    </section>
+
+    <!-- 11 -->
+    <section class="slide" id="slide-11" role="region" aria-roledescription="slide" aria-label="Lệnh hàng ngày">
+      <div class="slide__inner">
+        <p class="kicker">Phần B · Lệnh thường dùng</p>
+        <h2>Bộ lệnh dùng hàng ngày</h2>
+        <p class="doc-lead">Thuộc vòng lặp này trước khi xử lý tình huống nâng cao.</p>
+        <pre><code>git pull
 git fetch
 git add .
 git status
@@ -154,379 +241,378 @@ git push origin main
 
 git branch -a
 git branch
-
 git checkout</code></pre>
-      <ul>
-        <li><code>git status</code> — xem đang có thay đổi gì</li>
-        <li><code>git add .</code> — đưa thay đổi vào staging</li>
-        <li><code>git commit -m "…"</code> — lưu thành 1 commit</li>
-        <li><code>git push origin main</code> — đẩy lên remote nhánh main</li>
-        <li><code>git branch</code> / <code>git branch -a</code> — xem nhánh local / tất cả</li>
-        <li><code>git checkout</code> — chuyển nhánh / file (dùng kèm tham số)</li>
-      </ul>
-    </section>
-
-    <!-- 9 -->
-    <section class="slide" id="slide-9" role="region" aria-roledescription="slide" aria-label="Tạo branch">
-      <p class="kicker">Phần B · Branch</p>
-      <h2>Tạo branch mới</h2>
-      <div class="stack">
-        <div class="case">
-          <p class="case__title">Cách 1 — Tạo và chuyển luôn sang branch mới</p>
-          <pre><code>git checkout -b ten-branch-moi
-git switch -c ten-branch-moi</code></pre>
-        </div>
-        <div class="case">
-          <p class="case__title">Cách 2 — Vẫn đứng ở branch cũ</p>
-          <p>Chỉ tạo branch, không chuyển sang.</p>
-          <pre><code>git branch ten-branch-moi</code></pre>
-        </div>
+        <ul>
+          <li><code>git status</code> — xem đang có thay đổi gì</li>
+          <li><code>git add .</code> — đưa thay đổi vào staging</li>
+          <li><code>git commit -m "…"</code> — lưu thành một commit</li>
+          <li><code>git push origin main</code> — đẩy lên remote nhánh main</li>
+          <li><code>git branch</code> / <code>git branch -a</code> — xem nhánh local / tất cả</li>
+          <li><code>git checkout</code> — chuyển nhánh (kèm tên nhánh)</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- 10 -->
-    <section class="slide" id="slide-10" role="region" aria-roledescription="slide" aria-label="Merge và cherry-pick">
-      <p class="kicker">Phần B · Merge</p>
-      <h2>Merge về branch &amp; cherry-pick</h2>
-
-      <p class="subhead">Merge</p>
-      <ol class="steps">
-        <li>
-          <span class="steps__n">1</span>
-          <div class="steps__body">
-            <h3>Checkout ra branch muốn merge về</h3>
-            <p>Đứng đúng nhánh đích trước khi merge.</p>
-          </div>
-        </li>
-        <li>
-          <span class="steps__n">2</span>
-          <div class="steps__body">
-            <h3>Fetch (nếu cần) rồi merge</h3>
-            <p><code>git fetch</code> lấy code mới về (nếu cùng trên local thì không cần).</p>
-            <pre><code>git fetch
-git merge branch_cần_lấy_code_về</code></pre>
-          </div>
-        </li>
-      </ol>
-
-      <p class="subhead">Cherry-pick — lấy đúng 1 commit</p>
-      <pre><code>git cherry-pick 67b17f1367b3e3c6e857f5beda196e8e2116e914</code></pre>
-    </section>
-
-    <!-- 11 -->
-    <section class="slide" id="slide-11" role="region" aria-roledescription="slide" aria-label="Xử lý conflict">
-      <p class="kicker">Phần B · Conflict</p>
-      <h2>Xử lý conflict khi merge</h2>
-      <p class="doc-lead">Khi merge có nhiều conflict, muốn xem / chọn code theo từng phía.</p>
-
-      <div class="case">
-        <p class="case__title">Giữ nguyên code gốc của nhánh hiện tại</p>
-        <pre><code>git checkout --ours .</code></pre>
-      </div>
-      <div class="case">
-        <p class="case__title">Giữ nguyên code gốc của nhánh đích (theirs)</p>
-        <pre><code>git checkout --theirs .</code></pre>
-      </div>
-
-      <p class="subhead">Sau đó xem / sửa từng file</p>
-      <pre><code>git checkout tenfile.abc</code></pre>
-      <p>Sửa xong, save lại, rồi:</p>
-      <pre><code>git add tenfile.abc
-git commit -m "fix-conflict-tenfile.abc"</code></pre>
-      <p>Hoặc sửa tất cả rồi mới commit:</p>
-      <pre><code>git add .
-git commit -m "fix-conflict-new-branch"</code></pre>
     </section>
 
     <!-- 12 -->
-    <section class="slide" id="slide-12" role="region" aria-roledescription="slide" aria-label="TH2 quên tạo branch">
-      <p class="kicker">Tình huống 2</p>
-      <h2>Code xong quên tạo branch</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Đang ở <code>main</code>, đã code (hoặc đã commit), muốn tạo branch mới để làm MR.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">a. Chưa commit</p>
-        <p>Tạo và chuyển sang branch mới, rồi tiếp tục code.</p>
-        <pre><code>git checkout -b feature-moi
-# Hoặc:
-git switch -c feature-moi</code></pre>
-        <p class="callout callout--tip"><strong>Nhớ</strong>Phải <code>add</code> và <code>commit</code>. Nếu không, khi quay lại <code>main</code> vẫn thấy thay đổi trong changes.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Đã commit</p>
-        <p>Dùng <code>reset</code> để khôi phục, rồi tạo branch như mục a.</p>
-        <pre><code>git reset HEAD~1</code></pre>
-      </div>
-
-      <div class="case">
-        <p class="case__title">c. Đã push</p>
-        <p>Vẫn dùng <code>git reset HEAD~1</code> nếu chưa được merge.</p>
+    <section class="slide" id="slide-12" role="region" aria-roledescription="slide" aria-label="Tạo branch">
+      <div class="slide__inner">
+        <p class="kicker">Phần B · Branch</p>
+        <h2>Tạo branch mới</h2>
+        <div class="stack">
+          <div class="case">
+            <p class="case__title">Cách 1 — Tạo và chuyển sang nhánh mới</p>
+            <pre><code>git checkout -b ten-branch-moi
+git switch -c ten-branch-moi</code></pre>
+          </div>
+          <div class="case">
+            <p class="case__title">Cách 2 — Chỉ tạo, vẫn đứng ở nhánh hiện tại</p>
+            <pre><code>git branch ten-branch-moi</code></pre>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- 13 -->
-    <section class="slide" id="slide-13" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
-      <p class="kicker">Tình huống 3</p>
-      <h2>Pull không được vì có commit local</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Có 1 commit cần push, và 2 commit cần pull.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">a. Nếu chưa commit</p>
-        <p>Stash lại rồi pull về, fix conflict rồi tiếp tục.</p>
-        <pre><code>git stash
-git pull
-git stash pop</code></pre>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Nếu đã commit</p>
-        <p>Reset để lấy lại code, stash, pull, rồi stash pop.</p>
-        <pre><code>git reset HEAD~1
-git stash
-git pull
-git stash pop</code></pre>
-        <p>Sau đó fix conflict nếu có và tiếp tục.</p>
+    <section class="slide" id="slide-13" role="region" aria-roledescription="slide" aria-label="Merge và cherry-pick">
+      <div class="slide__inner">
+        <p class="kicker">Phần B · Merge</p>
+        <h2>Merge về branch và cherry-pick</h2>
+        <p class="subhead">Merge</p>
+        <ol class="steps">
+          <li>
+            <span class="steps__n">1</span>
+            <div class="steps__body">
+              <h3>Checkout nhánh đích</h3>
+              <p>Đứng đúng nhánh muốn nhận code trước khi merge.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__n">2</span>
+            <div class="steps__body">
+              <h3>Fetch (nếu cần) rồi merge</h3>
+              <p>Cùng trên local thì không cần fetch.</p>
+              <pre><code>git fetch
+git merge branch_can_lay_code</code></pre>
+            </div>
+          </li>
+        </ol>
+        <p class="subhead">Cherry-pick — lấy đúng một commit</p>
+        <pre><code>git cherry-pick 67b17f1367b3e3c6e857f5beda196e8e2116e914</code></pre>
       </div>
     </section>
 
     <!-- 14 -->
-    <section class="slide" id="slide-14" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes">
-      <p class="kicker">Tình huống 4</p>
-      <h2>Muốn bỏ các changes</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Đang làm tính năng mới, càng làm càng sai — chỉ muốn reset vài file để làm lại.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">a. Chưa commit</p>
-        <p>Chọn discard changes trên UI, hoặc lệnh:</p>
-        <pre><code>git restore tenfile.abc
-
-# hoặc
-git checkout tenfile.abc</code></pre>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Đã commit</p>
-        <p>Dùng <code>git reset HEAD~1</code> để lấy lại code, sau đó discard file đó.</p>
-        <p>Nếu có nhiều commit — xem danh sách:</p>
-        <pre><code>git log --oneline</code></pre>
-        <p>Chọn commit cần về (ví dụ <code>4b6bd5d</code>):</p>
-        <pre><code>git checkout 4b6bd5d -- tenfile.abc</code></pre>
-        <p>Nếu về thẳng nội dung từ một branch (ví dụ <code>main</code>):</p>
-        <ul>
-          <li>Cách thủ công: mở branch main, copy file, paste ngược vào.</li>
-          <li>Hoặc lệnh:</li>
-        </ul>
-        <pre><code>git checkout main -- tenfile.abc</code></pre>
+    <section class="slide" id="slide-14" role="region" aria-roledescription="slide" aria-label="Xử lý conflict">
+      <div class="slide__inner">
+        <p class="kicker">Phần B · Conflict</p>
+        <h2>Xử lý conflict khi merge</h2>
+        <p class="doc-lead">Khi merge có nhiều conflict, chọn code theo từng phía rồi commit.</p>
+        <div class="case">
+          <p class="case__title">Giữ code của nhánh hiện tại</p>
+          <pre><code>git checkout --ours .</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">Giữ code của nhánh đang merge vào (theirs)</p>
+          <pre><code>git checkout --theirs .</code></pre>
+        </div>
+        <p class="subhead">Sửa từng file rồi commit</p>
+        <pre><code>git add tenfile.abc
+git commit -m "fix-conflict-tenfile.abc"</code></pre>
+        <p>Hoặc sửa hết rồi commit một lần:</p>
+        <pre><code>git add .
+git commit -m "fix-conflict-new-branch"</code></pre>
       </div>
     </section>
 
     <!-- 15 -->
-    <section class="slide" id="slide-15" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
-      <p class="kicker">Tình huống 5</p>
-      <h2>Commit thiếu file</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Commit xong chưa push, nhớ ra chưa tăng version — muốn gộp change mới vào commit vừa tạo.</p>
+    <section class="slide" id="slide-15" role="region" aria-roledescription="slide" aria-label="TH2 quên tạo branch">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 2</p>
+        <h2>Code xong quên tạo branch</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Đang ở <code>main</code>, đã code hoặc đã commit, muốn tách sang nhánh mới để làm merge request.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">a. Chưa commit</p>
+          <p>Tạo và chuyển sang nhánh mới, rồi tiếp tục.</p>
+          <pre><code>git checkout -b feature-moi
+git switch -c feature-moi</code></pre>
+          <p class="callout callout--tip"><strong>Nhớ</strong>Phải <code>add</code> và <code>commit</code>. Nếu không, khi quay lại <code>main</code> thay đổi vẫn còn trong working tree.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">b. Đã commit — chưa push</p>
+          <p>Lùi commit gần nhất, rồi tạo nhánh như mục a.</p>
+          <pre><code>git reset HEAD~1</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">c. Đã push</p>
+          <p>Vẫn dùng <code>git reset HEAD~1</code> nếu commit đó chưa được merge.</p>
+        </div>
       </div>
-
-      <div class="case">
-        <p class="case__title">a. Dùng amend</p>
-        <p>Tiếp tục sửa file, rồi:</p>
-        <pre><code>git commit --amend --no-edit</code></pre>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Dùng reset rồi commit lại</p>
-        <pre><code>git reset HEAD~1
-# sửa file
-git add .
-git commit -m "commit"</code></pre>
-      </div>
-      <p class="callout"><strong>Trong tut</strong>Có thêm rebase nhưng <strong>không dùng</strong>.</p>
     </section>
 
     <!-- 16 -->
-    <section class="slide" id="slide-16" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
-      <p class="kicker">Tình huống 6</p>
-      <h2>Lỡ commit file phải nằm trong .gitignore</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p><code>.env</code>, file db dump nặng…</p>
+    <section class="slide" id="slide-16" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 3</p>
+        <h2>Pull không được vì có commit local</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Có 1 commit cần push, và 2 commit trên remote cần pull.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">a. Chưa commit</p>
+          <p>Stash thay đổi, pull, rồi lấy lại.</p>
+          <pre><code>git stash
+git pull
+git stash pop</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">b. Đã commit</p>
+          <p>Reset để lấy lại code, stash, pull, rồi stash pop. Fix conflict nếu có.</p>
+          <pre><code>git reset HEAD~1
+git stash
+git pull
+git stash pop</code></pre>
+        </div>
       </div>
-
-      <div class="case">
-        <p class="case__title">a. Chưa push</p>
-        <p>Dùng <code>reset HEAD~1</code> để khôi phục, discard file đó, thêm vào <code>.gitignore</code>, rồi commit lại.</p>
-        <pre><code>git reset HEAD~1
-# discard file nhạy cảm / bỏ stage
-# thêm vào .gitignore
-git add .
-git commit -m "commit"</code></pre>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Đã push qua nhiều commit (cần bỏ lịch sử)</p>
-        <p>Quét và bóc sạch file <code>.env</code> ra khỏi toàn bộ commit cũ:</p>
-        <pre><code>git filter-branch --force --index-filter \
-  "git rm --cached --ignore-unmatch .env" \
-  --prune-empty --tag-name-filter cat -- --all</code></pre>
-        <p>Sau đó thêm <code>.env</code> vào <code>.gitignore</code> và commit lại:</p>
-        <pre><code>git add .
-git commit -m "remove file .env from git"
-git push origin main --force</code></pre>
-      </div>
-      <p class="callout callout--danger"><strong>Cẩn thận</strong><code>push --force</code> ghi đè lịch sử trên remote. Chỉ dùng khi hiểu rõ và team đồng ý.</p>
     </section>
 
     <!-- 17 -->
-    <section class="slide" id="slide-17" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
-      <p class="kicker">Tình huống 7</p>
-      <h2>Quay lại commit cũ</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Ở commit A → làm sang commit B, đã push hết; lúc test lỗi nhiều, muốn về commit A làm lại.</p>
-      </div>
+    <section class="slide" id="slide-17" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes chưa commit">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 4 · Chưa commit</p>
+        <h2>Muốn bỏ các thay đổi</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Đang làm tính năng mới, muốn hoàn tác vài file về trạng thái đã commit.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">Discard trên UI hoặc bằng lệnh</p>
+          <pre><code>git restore tenfile.abc
 
-      <div class="case">
-        <p class="case__title">a. Checkout commit rồi copy thủ công</p>
-        <pre><code>git log --oneline
-git checkout 4b6bd5d</code></pre>
-        <p>Copy các file code, về lại branch cũ, paste vào rồi tiếp tục. Cách này thủ công và không phù hợp với git.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">b. Dùng HEAD nếu biết lùi bao nhiêu commit</p>
-        <p>Ví dụ <code>4b6bd5d</code> là commit thứ 3:</p>
-        <pre><code>git reset HEAD~3</code></pre>
-        <p>Sau đó sửa code, <code>add</code>, commit lại. Cách này vẫn lưu lịch sử trên web.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">Cách chuẩn hơn (theo tut)</p>
-        <p>Reset cứng local về commit A, rồi force push:</p>
-        <pre><code>git reset --hard 4b6bd5d
-
-# nếu commit B là commit vừa tạo:
-git reset --hard HEAD~1
-
-git push origin main --force</code></pre>
-        <p>Sau đó mới tiếp tục làm.</p>
-      </div>
-
-      <div class="case">
-        <p class="case__title">Hoặc dùng revert</p>
-        <pre><code>git revert &lt;ma_commit_B&gt;</code></pre>
-        <p>Sau đó tiếp tục làm rồi push sau.</p>
+# hoặc
+git checkout tenfile.abc</code></pre>
+        </div>
       </div>
     </section>
 
     <!-- 18 -->
-    <section class="slide" id="slide-18" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
-      <p class="kicker">Tình huống 8</p>
-      <h2>MR bị conflict — không merge vào main được</h2>
-      <p class="doc-lead">Luồng trong tut: pull main → merge main vào branch → fix → đẩy commit mới.</p>
-      <ol class="steps">
-        <li><span class="steps__n">1</span><div class="steps__body"><h3>Pull main về</h3></div></li>
-        <li><span class="steps__n">2</span><div class="steps__body"><h3>Merge main vào branch của bạn</h3></div></li>
-        <li><span class="steps__n">3</span><div class="steps__body"><h3>Fix conflict</h3></div></li>
-        <li><span class="steps__n">4</span><div class="steps__body"><h3>Đẩy commit mới (lên branch, không phải main)</h3></div></li>
-      </ol>
-      <pre><code>git checkout main
-git pull origin main
-git checkout ten_branch
-git merge main
-
-# sửa conflict
-git add .
-git commit -m "fix conflict"
-git push origin ten_branch</code></pre>
-      <p class="callout callout--warn"><strong>Chú ý</strong>Push <code>ten_branch</code>, không phải <code>main</code> — vì đang fix conflict trên branch đó.</p>
+    <section class="slide" id="slide-18" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes đã commit">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 4 · Đã commit</p>
+        <h2>Lấy lại nội dung file từ commit hoặc nhánh</h2>
+        <p class="doc-lead">Dùng <code>git reset HEAD~1</code> nếu chỉ cần lùi commit gần nhất, rồi discard file.</p>
+        <p class="subhead">Nhiều commit — xem danh sách</p>
+        <pre><code>git log --oneline</code></pre>
+        <p>Lấy file từ một commit cụ thể (ví dụ <code>4b6bd5d</code>):</p>
+        <pre><code>git checkout 4b6bd5d -- tenfile.abc</code></pre>
+        <p>Lấy file đúng như trên nhánh <code>main</code>:</p>
+        <pre><code>git checkout main -- tenfile.abc</code></pre>
+      </div>
     </section>
 
     <!-- 19 -->
-    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
-      <p class="kicker">Tình huống 9</p>
-      <h2>dev nhiều tính năng — chỉ merge một phần vào main</h2>
-      <div class="scenario">
-        <span class="scenario__label">Tình huống</span>
-        <p>Repo có <code>dev</code> và <code>main</code>. <code>dev</code> có thêm nhiều tính năng nhưng chỉ được merge vào <code>main</code> một số (còn lại đợi khách duyệt).</p>
-      </div>
-      <p class="doc-lead">Đầu tiên: tạo 1 branch mới từ <code>main</code>, checkout sang branch đó.</p>
-      <div class="stack">
-        <div class="case">
-          <p class="case__title">C1 — Cherry-pick</p>
-          <p>Xem tính năng đó ở commit nào, cherry-pick commit đó sang.</p>
-          <pre><code>git cherry-pick &lt;ma_commit&gt;</code></pre>
+    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 5</p>
+        <h2>Commit thiếu file</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Commit xong chưa push, nhớ ra thiếu thay đổi — muốn gộp vào commit vừa tạo.</p>
         </div>
         <div class="case">
-          <p class="case__title">C2 — Merge nhánh tính năng</p>
-          <p>Xem tính năng mới đó ở branch nào, merge branch đó sang.</p>
-          <pre><code>git merge branch_tinh_nang</code></pre>
+          <p class="case__title">a. Amend</p>
+          <p>Sửa file, rồi:</p>
+          <pre><code>git commit --amend --no-edit</code></pre>
         </div>
         <div class="case">
-          <p class="case__title">C3 — Làm thủ công</p>
-          <p>Tạo branch mới từ main, xem tính năng ở file nào, copy sang.</p>
+          <p class="case__title">b. Reset rồi commit lại</p>
+          <pre><code>git reset HEAD~1
+git add .
+git commit -m "commit"</code></pre>
         </div>
+        <p class="callout"><strong>Quy trình này</strong>Không dùng rebase.</p>
       </div>
     </section>
 
     <!-- 20 -->
-    <section class="slide" id="slide-20" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
-      <p class="kicker">Tình huống 10</p>
-      <h2>Sửa lại commit message vừa gõ</h2>
-      <div class="scenario">
-        <span class="scenario__label">Ví dụ</span>
-        <p>Gõ sai chính tả trong message commit vừa tạo.</p>
-      </div>
-      <div class="case">
-        <p class="case__title">C1 — Reset rồi commit lại</p>
-        <p>Dùng <code>HEAD~1</code> sau đó commit lại.</p>
-        <pre><code>git reset HEAD~1
+    <section class="slide" id="slide-20" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 6</p>
+        <h2>Lỡ commit file phải nằm trong .gitignore</h2>
+        <div class="scenario">
+          <span class="scenario__label">Ví dụ</span>
+          <p>File <code>.env</code>, dump database, hoặc file nhạy cảm khác.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">a. Chưa push</p>
+          <p>Reset, loại file khỏi staging, thêm vào <code>.gitignore</code>, rồi commit lại.</p>
+          <pre><code>git reset HEAD~1
+# loại file nhạy cảm khỏi staging
+# thêm vào .gitignore
 git add .
-git commit -m "tên commit đúng"</code></pre>
-      </div>
-      <div class="case">
-        <p class="case__title">C2 — Amend message</p>
-        <pre><code>git commit --amend -m "tên commit mới"</code></pre>
+git commit -m "commit"</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">b. Đã push — cần xóa khỏi lịch sử</p>
+          <pre><code>git filter-branch --force --index-filter \
+  "git rm --cached --ignore-unmatch .env" \
+  --prune-empty --tag-name-filter cat -- --all</code></pre>
+          <pre><code>git add .
+git commit -m "remove file .env from git"
+git push origin main --force</code></pre>
+        </div>
+        <p class="callout callout--danger"><strong>Cẩn thận</strong><code>push --force</code> ghi đè lịch sử trên remote. Chỉ dùng khi hiểu rõ và team đồng ý.</p>
       </div>
     </section>
 
     <!-- 21 -->
-    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
-      <p class="kicker">Phần D · Quản lý branch</p>
-      <h2>Đổi tên &amp; xóa branch</h2>
-      <div class="case">
-        <p class="case__title">12. Đổi tên branch</p>
-        <pre><code>git branch -m ten-branch-moi</code></pre>
-      </div>
-      <div class="case">
-        <p class="case__title">13. Xóa branch</p>
-        <pre><code>git branch -D ten-branch-muon-xoa</code></pre>
+    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 7</p>
+        <h2>Quay lại commit cũ</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Đã đi từ commit A sang commit B và đã push. Muốn về A để làm lại.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">a. Reset theo số commit</p>
+          <p>Ví dụ <code>4b6bd5d</code> cách HEAD 3 commit:</p>
+          <pre><code>git log --oneline
+git reset HEAD~3</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">b. Reset cứng về đúng commit, rồi force push</p>
+          <pre><code>git reset --hard 4b6bd5d
+
+# nếu B là commit vừa tạo:
+git reset --hard HEAD~1
+
+git push origin main --force</code></pre>
+        </div>
+        <p class="callout callout--danger"><strong>Cẩn thận</strong><code>reset --hard</code> xóa thay đổi chưa commit. <code>push --force</code> ghi đè remote.</p>
       </div>
     </section>
 
     <!-- 22 -->
-    <section class="slide slide--center" id="slide-22" role="region" aria-roledescription="slide" aria-label="Kết thúc">
-      <p class="kicker">Kết thúc</p>
-      <h1>Thực hành theo từng tình huống</h1>
-      <p class="doc-lead">Nhớ vòng lặp: <code>status</code> → <code>add</code> → <code>commit</code> → <code>push</code>. Gặp tình huống thì mở lại đúng slide trong mục lục (<kbd>O</kbd>).</p>
-      <p class="doc-lead" style="margin-top:12px">Q&amp;A</p>
+    <section class="slide" id="slide-22" role="region" aria-roledescription="slide" aria-label="TH7 revert">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 7 · An toàn hơn</p>
+        <h2>Dùng revert thay vì xóa lịch sử</h2>
+        <p class="doc-lead">Revert tạo commit mới đảo ngược thay đổi — lịch sử trên remote vẫn còn.</p>
+        <div class="case">
+          <p class="case__title">Revert commit B</p>
+          <pre><code>git revert &lt;ma_commit_B&gt;</code></pre>
+          <p>Sau đó tiếp tục làm và push như bình thường.</p>
+        </div>
+        <p class="callout callout--tip"><strong>Khi nào chọn gì</strong>Nhánh riêng, chưa ai dựa vào: có thể reset. Nhánh dùng chung: ưu tiên revert.</p>
+      </div>
+    </section>
+
+    <!-- 23 -->
+    <section class="slide" id="slide-23" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 8</p>
+        <h2>MR bị conflict — không merge vào main được</h2>
+        <p class="doc-lead">Luồng: kéo <code>main</code> → merge vào nhánh của bạn → sửa conflict → push nhánh đó.</p>
+        <ol class="steps">
+          <li><span class="steps__n">1</span><div class="steps__body"><h3>Pull main về</h3></div></li>
+          <li><span class="steps__n">2</span><div class="steps__body"><h3>Merge main vào nhánh của bạn</h3></div></li>
+          <li><span class="steps__n">3</span><div class="steps__body"><h3>Sửa conflict</h3></div></li>
+          <li><span class="steps__n">4</span><div class="steps__body"><h3>Push nhánh feature, không phải main</h3></div></li>
+        </ol>
+        <pre><code>git checkout main
+git pull origin main
+git checkout ten_branch
+git merge main
+
+git add .
+git commit -m "fix conflict"
+git push origin ten_branch</code></pre>
+        <p class="callout callout--warn"><strong>Chú ý</strong>Push <code>ten_branch</code>, không phải <code>main</code>.</p>
+      </div>
+    </section>
+
+    <!-- 24 -->
+    <section class="slide" id="slide-24" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 9</p>
+        <h2>dev nhiều tính năng — chỉ merge một phần vào main</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Repo có <code>dev</code> và <code>main</code>. Chỉ được đưa một số tính năng từ <code>dev</code> sang <code>main</code>.</p>
+        </div>
+        <p class="doc-lead">Tạo nhánh mới từ <code>main</code>, checkout sang nhánh đó, rồi chọn một trong hai cách:</p>
+        <div class="stack">
+          <div class="case">
+            <p class="case__title">C1 — Cherry-pick</p>
+            <p>Lấy đúng commit của tính năng đó.</p>
+            <pre><code>git cherry-pick &lt;ma_commit&gt;</code></pre>
+          </div>
+          <div class="case">
+            <p class="case__title">C2 — Merge nhánh tính năng</p>
+            <p>Merge cả nhánh chứa tính năng cần lấy.</p>
+            <pre><code>git merge branch_tinh_nang</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 25 -->
+    <section class="slide" id="slide-25" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 10</p>
+        <h2>Sửa commit message vừa gõ</h2>
+        <div class="scenario">
+          <span class="scenario__label">Tình huống</span>
+          <p>Gõ sai chính tả trong message của commit vừa tạo, chưa push.</p>
+        </div>
+        <div class="case">
+          <p class="case__title">C1 — Reset rồi commit lại</p>
+          <pre><code>git reset HEAD~1
+git add .
+git commit -m "tên commit đúng"</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">C2 — Amend message</p>
+          <pre><code>git commit --amend -m "tên commit mới"</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 26 -->
+    <section class="slide" id="slide-26" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
+      <div class="slide__inner">
+        <p class="kicker">Phần D · Quản lý branch</p>
+        <h2>Đổi tên và xóa branch</h2>
+        <div class="case">
+          <p class="case__title">Đổi tên nhánh hiện tại</p>
+          <pre><code>git branch -m ten-branch-moi</code></pre>
+        </div>
+        <div class="case">
+          <p class="case__title">Xóa nhánh local</p>
+          <pre><code>git branch -D ten-branch-muon-xoa</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- 27 -->
+    <section class="slide slide--center" id="slide-27" role="region" aria-roledescription="slide" aria-label="Kết thúc">
+      <div class="slide__inner">
+        <p class="kicker">Kết thúc</p>
+        <h1>Thực hành theo từng tình huống</h1>
+        <p class="doc-lead">Vòng lặp mỗi ngày: <code>status</code> → <code>add</code> → <code>commit</code> → <code>push</code>.</p>
+        <p class="doc-lead">Gặp vấn đề: mở mục lục (<kbd>O</kbd>) và tới đúng tình huống.</p>
+        <p class="doc-lead" style="margin-top:12px">Câu hỏi?</p>
+      </div>
     </section>
   </main>
 
   <nav class="chrome" aria-label="Điều khiển tài liệu">
     <div class="chrome__left">
-      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 22</span>
+      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 27</span>
       <span class="help-hint">Phím <strong>?</strong> · Mục lục <strong>O</strong></span>
     </div>
     <div class="chrome__right">
