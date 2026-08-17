@@ -199,31 +199,7 @@
     </section>
 
     <!-- 9 -->
-    <section class="slide" id="slide-9" role="region" aria-roledescription="slide" aria-label="Demo clone với SSH">
-      <div class="slide__inner">
-        <p class="kicker">Phần A · Demo video</p>
-        <h2>Demo: Clone repo bằng SSH key</h2>
-        <p class="doc-lead">Xem lại các bước tạo / thêm SSH key và clone repo.</p>
-        <div class="video-wrap">
-          <video
-            class="demo-video"
-            controls
-            playsinline
-            preload="metadata"
-            controlslist="nodownload"
-            aria-label="Video demo clone repository bằng SSH key"
-          >
-            <source src="video/clone-voi-ssh.mp4" type="video/mp4" />
-            Trình duyệt không phát được video này. Mở file
-            <code>video/clone-voi-ssh.mp4</code> trên máy.
-          </video>
-        </div>
-        <p class="callout callout--tip"><strong>Gợi ý</strong>Nhấn phát trên video. Đổi slide sẽ tự dừng video.</p>
-      </div>
-    </section>
-
-    <!-- 10 -->
-    <section class="slide" id="slide-10" role="region" aria-roledescription="slide" aria-label="Clone và set PAT">
+    <section class="slide" id="slide-9" role="region" aria-roledescription="slide" aria-label="Clone và set PAT">
       <div class="slide__inner">
         <p class="kicker">Phần A · Clone repo</p>
         <h2>Clone repo và gắn PAT vào remote</h2>
@@ -239,32 +215,54 @@ origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (
       </div>
     </section>
 
-    <!-- 11 -->
-    <section class="slide" id="slide-11" role="region" aria-roledescription="slide" aria-label="Demo clone với PAT">
+    <!-- 10 -->
+    <section class="slide" id="slide-10" role="region" aria-roledescription="slide" aria-label="Demo clone SSH và PAT">
       <div class="slide__inner">
         <p class="kicker">Phần A · Demo video</p>
-        <h2>Demo: Clone repo bằng PAT</h2>
-        <p class="doc-lead">Xem lại các bước dùng Personal Access Token để clone repo.</p>
-        <div class="video-wrap">
-          <video
-            class="demo-video"
-            controls
-            playsinline
-            preload="metadata"
-            controlslist="nodownload"
-            aria-label="Video demo clone repository bằng PAT"
-          >
-            <source src="video/clone-voi-pat.mp4" type="video/mp4" />
-            Trình duyệt không phát được video này. Mở file
-            <code>video/clone-voi-pat.mp4</code> trên máy.
-          </video>
+        <h2>Demo: Clone bằng SSH và PAT</h2>
+        <p class="doc-lead">Hai video trên cùng một màn — chọn video nào xem trước cũng được, không cần xem hết cái này mới sang cái kia.</p>
+        <div class="video-grid">
+          <figure class="video-card">
+            <figcaption class="video-card__title">Clone với SSH key</figcaption>
+            <div class="video-wrap">
+              <video
+                class="demo-video"
+                controls
+                playsinline
+                preload="metadata"
+                controlslist="nodownload"
+                aria-label="Video demo clone repository bằng SSH key"
+              >
+                <source src="video/clone-voi-ssh.mp4" type="video/mp4" />
+                Trình duyệt không phát được video. Mở
+                <code>video/clone-voi-ssh.mp4</code>.
+              </video>
+            </div>
+          </figure>
+          <figure class="video-card">
+            <figcaption class="video-card__title">Clone với PAT</figcaption>
+            <div class="video-wrap">
+              <video
+                class="demo-video"
+                controls
+                playsinline
+                preload="metadata"
+                controlslist="nodownload"
+                aria-label="Video demo clone repository bằng PAT"
+              >
+                <source src="video/clone-voi-pat.mp4" type="video/mp4" />
+                Trình duyệt không phát được video. Mở
+                <code>video/clone-voi-pat.mp4</code>.
+              </video>
+            </div>
+          </figure>
         </div>
-        <p class="callout callout--tip"><strong>Gợi ý</strong>Nhấn phát trên video. Đổi slide sẽ tự dừng video.</p>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Mỗi video có nút phát riêng. Đổi slide sẽ dừng cả hai.</p>
       </div>
     </section>
 
-    <!-- 12 -->
-    <section class="slide" id="slide-12" role="region" aria-roledescription="slide" aria-label="git fetch">
+    <!-- 11 -->
+    <section class="slide" id="slide-11" role="region" aria-roledescription="slide" aria-label="git fetch">
       <div class="slide__inner">
         <p class="kicker">Phần B · Lệnh thường dùng</p>
         <h2>git fetch là gì?</h2>
@@ -274,8 +272,8 @@ origin  https://USERNAME:glpat-xxxxxxxxxx@gitlab.com/group/studybooks-2026.git (
       </div>
     </section>
 
-    <!-- 13 -->
-    <section class="slide" id="slide-13" role="region" aria-roledescription="slide" aria-label="Lệnh hàng ngày">
+    <!-- 12 -->
+    <section class="slide" id="slide-12" role="region" aria-roledescription="slide" aria-label="Lệnh hàng ngày">
       <div class="slide__inner">
         <p class="kicker">Phần B · Lệnh thường dùng</p>
         <h2>Bộ lệnh dùng hàng ngày</h2>
@@ -301,8 +299,8 @@ git checkout</code></pre>
       </div>
     </section>
 
-    <!-- 14 -->
-    <section class="slide" id="slide-14" role="region" aria-roledescription="slide" aria-label="Tạo branch">
+    <!-- 13 -->
+    <section class="slide" id="slide-13" role="region" aria-roledescription="slide" aria-label="Tạo branch">
       <div class="slide__inner">
         <p class="kicker">Phần B · Branch</p>
         <h2>Tạo branch mới</h2>
@@ -320,8 +318,8 @@ git switch -c ten-branch-moi</code></pre>
       </div>
     </section>
 
-    <!-- 15 -->
-    <section class="slide" id="slide-15" role="region" aria-roledescription="slide" aria-label="Merge và cherry-pick">
+    <!-- 14 -->
+    <section class="slide" id="slide-14" role="region" aria-roledescription="slide" aria-label="Merge và cherry-pick">
       <div class="slide__inner">
         <p class="kicker">Phần B · Merge</p>
         <h2>Merge về branch và cherry-pick</h2>
@@ -349,8 +347,8 @@ git merge branch_can_lay_code</code></pre>
       </div>
     </section>
 
-    <!-- 16 -->
-    <section class="slide" id="slide-16" role="region" aria-roledescription="slide" aria-label="Xử lý conflict">
+    <!-- 15 -->
+    <section class="slide" id="slide-15" role="region" aria-roledescription="slide" aria-label="Xử lý conflict">
       <div class="slide__inner">
         <p class="kicker">Phần B · Conflict</p>
         <h2>Xử lý conflict khi merge</h2>
@@ -372,8 +370,8 @@ git commit -m "fix-conflict-new-branch"</code></pre>
       </div>
     </section>
 
-    <!-- 17 -->
-    <section class="slide" id="slide-17" role="region" aria-roledescription="slide" aria-label="TH2 quên tạo branch">
+    <!-- 16 -->
+    <section class="slide" id="slide-16" role="region" aria-roledescription="slide" aria-label="TH2 quên tạo branch">
       <div class="slide__inner">
         <p class="kicker">Tình huống 2</p>
         <h2>Code xong quên tạo branch</h2>
@@ -400,8 +398,8 @@ git switch -c feature-moi</code></pre>
       </div>
     </section>
 
-    <!-- 18 -->
-    <section class="slide" id="slide-18" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
+    <!-- 17 -->
+    <section class="slide" id="slide-17" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
       <div class="slide__inner">
         <p class="kicker">Tình huống 3</p>
         <h2>Pull không được vì có commit local</h2>
@@ -427,8 +425,8 @@ git stash pop</code></pre>
       </div>
     </section>
 
-    <!-- 19 -->
-    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes chưa commit">
+    <!-- 18 -->
+    <section class="slide" id="slide-18" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes chưa commit">
       <div class="slide__inner">
         <p class="kicker">Tình huống 4 · Chưa commit</p>
         <h2>Muốn bỏ các thay đổi</h2>
@@ -446,8 +444,8 @@ git checkout tenfile.abc</code></pre>
       </div>
     </section>
 
-    <!-- 20 -->
-    <section class="slide" id="slide-20" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes đã commit">
+    <!-- 19 -->
+    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes đã commit">
       <div class="slide__inner">
         <p class="kicker">Tình huống 4 · Đã commit</p>
         <h2>Lấy lại nội dung file từ commit hoặc nhánh</h2>
@@ -461,8 +459,8 @@ git checkout tenfile.abc</code></pre>
       </div>
     </section>
 
-    <!-- 21 -->
-    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
+    <!-- 20 -->
+    <section class="slide" id="slide-20" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
       <div class="slide__inner">
         <p class="kicker">Tình huống 5</p>
         <h2>Commit thiếu file</h2>
@@ -485,8 +483,8 @@ git commit -m "commit"</code></pre>
       </div>
     </section>
 
-    <!-- 22 -->
-    <section class="slide" id="slide-22" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
+    <!-- 21 -->
+    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
       <div class="slide__inner">
         <p class="kicker">Tình huống 6</p>
         <h2>Lỡ commit file phải nằm trong .gitignore</h2>
@@ -516,8 +514,8 @@ git push origin main --force</code></pre>
       </div>
     </section>
 
-    <!-- 23 -->
-    <section class="slide" id="slide-23" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
+    <!-- 22 -->
+    <section class="slide" id="slide-22" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
       <div class="slide__inner">
         <p class="kicker">Tình huống 7</p>
         <h2>Quay lại commit cũ</h2>
@@ -544,8 +542,8 @@ git push origin main --force</code></pre>
       </div>
     </section>
 
-    <!-- 24 -->
-    <section class="slide" id="slide-24" role="region" aria-roledescription="slide" aria-label="TH7 revert">
+    <!-- 23 -->
+    <section class="slide" id="slide-23" role="region" aria-roledescription="slide" aria-label="TH7 revert">
       <div class="slide__inner">
         <p class="kicker">Tình huống 7 · An toàn hơn</p>
         <h2>Dùng revert thay vì xóa lịch sử</h2>
@@ -559,8 +557,8 @@ git push origin main --force</code></pre>
       </div>
     </section>
 
-    <!-- 25 -->
-    <section class="slide" id="slide-25" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
+    <!-- 24 -->
+    <section class="slide" id="slide-24" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
       <div class="slide__inner">
         <p class="kicker">Tình huống 8</p>
         <h2>MR bị conflict — không merge vào main được</h2>
@@ -583,8 +581,8 @@ git push origin ten_branch</code></pre>
       </div>
     </section>
 
-    <!-- 26 -->
-    <section class="slide" id="slide-26" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
+    <!-- 25 -->
+    <section class="slide" id="slide-25" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
       <div class="slide__inner">
         <p class="kicker">Tình huống 9</p>
         <h2>dev nhiều tính năng — chỉ merge một phần vào main</h2>
@@ -608,8 +606,8 @@ git push origin ten_branch</code></pre>
       </div>
     </section>
 
-    <!-- 27 -->
-    <section class="slide" id="slide-27" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
+    <!-- 26 -->
+    <section class="slide" id="slide-26" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
       <div class="slide__inner">
         <p class="kicker">Tình huống 10</p>
         <h2>Sửa commit message vừa gõ</h2>
@@ -630,8 +628,8 @@ git commit -m "tên commit đúng"</code></pre>
       </div>
     </section>
 
-    <!-- 28 -->
-    <section class="slide" id="slide-28" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
+    <!-- 27 -->
+    <section class="slide" id="slide-27" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
       <div class="slide__inner">
         <p class="kicker">Phần D · Quản lý branch</p>
         <h2>Đổi tên và xóa branch</h2>
@@ -646,8 +644,8 @@ git commit -m "tên commit đúng"</code></pre>
       </div>
     </section>
 
-    <!-- 29 -->
-    <section class="slide slide--center" id="slide-29" role="region" aria-roledescription="slide" aria-label="Kết thúc">
+    <!-- 28 -->
+    <section class="slide slide--center" id="slide-28" role="region" aria-roledescription="slide" aria-label="Kết thúc">
       <div class="slide__inner">
         <p class="kicker">Kết thúc</p>
         <h1>Thực hành theo từng tình huống</h1>
@@ -660,7 +658,7 @@ git commit -m "tên commit đúng"</code></pre>
 
   <nav class="chrome" aria-label="Điều khiển tài liệu">
     <div class="chrome__left">
-      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 29</span>
+      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 28</span>
       <span class="help-hint">Phím <strong>?</strong> · Mục lục <strong>O</strong></span>
     </div>
     <div class="chrome__right">
