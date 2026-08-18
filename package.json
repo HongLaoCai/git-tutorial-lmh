@@ -1,0 +1,10 @@
+{
+  "name": "git-tutorial-lmh",
+  "private": true,
+  "description": "Git tutorial slides + sandbox examples",
+  "scripts": {
+    "make-example": "node scripts/make-example.js",
+    "make-example:list": "node scripts/make-example.js list",
+    "make-example:all": "node scripts/make-example.js all"
+  }
+}
