@@ -1,9 +1,0 @@
-abcd
-
-/Volumes/SSKSSD/GitHub/2026/git-tutorial-lmh/test.txt
-
-abcd
-
-efgh
-
-jklmn
