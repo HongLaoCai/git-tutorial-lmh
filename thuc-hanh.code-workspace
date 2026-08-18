@@ -1,0 +1,17 @@
+{
+  "folders": [
+    {
+      "name": "01 Slide tut",
+      "path": "."
+    },
+    {
+      "name": "02 Sandbox 2a",
+      "path": "examples/playground/2a"
+    }
+  ],
+  "settings": {
+    "git.autoRepositoryDetection": true,
+    "git.repositoryScanMaxDepth": 6,
+    "git.openRepositoryInParentFolders": "never"
+  }
+}

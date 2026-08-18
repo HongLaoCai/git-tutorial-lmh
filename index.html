@@ -136,15 +136,34 @@
     <section class="slide" id="slide-6" role="region" aria-roledescription="slide" aria-label="Thực hành sandbox">
       <div class="slide__inner">
         <p class="kicker">Thực hành</p>
-        <h2>Tạo ví dụ để demo</h2>
-        <p class="doc-lead">Mỗi tình huống trong tut có sandbox riêng. Lệnh này tạo lại thư mục sạch, không đụng repo slide.</p>
-        <pre><code>yarn make-example list
-yarn make-example 8
-yarn make-example 2
-yarn make-example all</code></pre>
-        <p>Rồi vào thư mục vừa tạo, đọc <code>PRACTICE.md</code> và gõ đúng lệnh trong tut:</p>
-        <pre><code>cd examples/playground/8</code></pre>
-        <p class="callout callout--tip"><strong>Gợi ý lúc demo</strong>Trước mỗi tình huống, chạy lại <code>yarn make-example &lt;id&gt;</code> để học viên bắt đầu từ cùng một trạng thái.</p>
+        <h2>Tạo ví dụ và theo dõi đúng / sai</h2>
+        <p class="doc-lead">Sandbox nằm trong repo slide nên panel Changes mặc định <strong>không hiện</strong>. Mở workspace thực hành, rồi bật bảng theo dõi.</p>
+        <pre><code>yarn make-example 2a
+yarn practice 2a</code></pre>
+        <ol class="steps">
+          <li>
+            <span class="steps__n">1</span>
+            <div class="steps__body">
+              <h3>Mở thuc-hanh.code-workspace</h3>
+              <p>File → Open Workspace from File. Explorer có folder <strong>02 Sandbox</strong>.</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__n">2</span>
+            <div class="steps__body">
+              <h3>Source Control chọn đúng repo sandbox</h3>
+              <p>Bấm tên repo trên cùng, chọn <code>2a</code> (không chọn git-tutorial-lmh).</p>
+            </div>
+          </li>
+          <li>
+            <span class="steps__n">3</span>
+            <div class="steps__body">
+              <h3>Mở THEO_DOI.md</h3>
+              <p>File này báo <strong>ĐÚNG</strong> / <strong>CHƯA XONG</strong> khi bạn gõ lệnh.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="callout callout--tip"><strong>Làm lại từ đầu</strong><code>yarn make-example 2a</code> rồi <code>yarn practice 2a</code>.</p>
       </div>
     </section>
 
