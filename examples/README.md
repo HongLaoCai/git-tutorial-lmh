@@ -1,6 +1,19 @@
 # Sandbox thực hành Git
 
-Các ví dụ bám đúng tình huống trong `docs.txt`. Mỗi lần chạy sẽ **tạo lại** thư mục sạch trong `examples/playground/` (không đụng slide / repo tut).
+Các ví dụ bám đúng tình huống trong `docs.txt`. Sandbox nằm trong repo slide nên panel Changes của Cursor **không hiện** file bạn đang sửa.
+
+## Cách thấy Changes + branch
+
+1. Cursor: **File → Open Workspace from File…** → chọn `thuc-hanh.code-workspace`
+2. Explorer bên trái có folder **02 Sandbox đang làm**
+3. Source Control: bấm **tên repo** phía trên (thường đang là `git-tutorial-lmh`) → chọn repo sandbox (`2a`, `8`, …)
+4. Chạy `yarn practice 2a` và mở file `THEO_DOI.md` — báo ĐÚNG / CHƯA XONG
+
+```bash
+yarn practice 2a          # theo dõi live
+yarn check-example 2a     # kiểm tra 1 lần
+```
+
 
 ```bash
 yarn make-example list          # danh sách

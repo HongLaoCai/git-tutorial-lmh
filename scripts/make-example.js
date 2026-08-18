@@ -101,7 +101,7 @@ function writePractice(work, meta) {
   write(work, "PRACTICE.md", body);
   const exclude = path.join(work, ".git", "info", "exclude");
   fs.mkdirSync(path.dirname(exclude), { recursive: true });
-  fs.appendFileSync(exclude, "\nPRACTICE.md\n");
+  fs.appendFileSync(exclude, "\nPRACTICE.md\nTHEO_DOI.md\n");
 }
 
 const catalog = [];
