@@ -161,11 +161,19 @@ function checksFor(id, s) {
         ["Đã xóa ten-branch-muon-xoa", !s.branches.some((b) => b.includes("ten-branch-muon-xoa")), s.branches.join(", ")],
         ["Đang ở main", s.branch === "main", `đang ở ${s.branch}`],
       ];
-    case "conflict":
+    case "conflict": {
+      const conflictFiles = ["app.js", "version.txt", "README.txt", "config.js", "api.js"];
+      const hasMarker = conflictFiles.some((f) => s.fileHas(f, "<<<<<<<"));
+      const uuCount = s.status.split("\n").filter((l) => l.includes("UU")).length;
       return [
-        ["Không còn conflict marker", !s.fileHas("app.js", "<<<<<<<"), s.status.includes("UU") ? "đang conflict" : "đã xử lý / chưa merge"],
+        [
+          "Không còn conflict marker (5 file)",
+          !hasMarker && !s.status.includes("UU"),
+          uuCount ? `còn ${uuCount} file đang conflict` : hasMarker ? "còn marker" : "đã xử lý / chưa merge",
+        ],
         ["Đã commit xong conflict", !s.dirty || s.status.length === 0, s.dirty ? "còn chưa commit" : "sạch"],
       ];
+    }
     case "cherry-pick":
       return [
         ["main đã có login.js", s.fileExists("login.js"), s.fileExists("login.js") ? "có" : "chưa pick"],

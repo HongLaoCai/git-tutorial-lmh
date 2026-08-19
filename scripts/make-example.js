@@ -596,30 +596,57 @@ def({
   tut: "Phan B — Xu ly conflict khi merge",
   title: "Merge conflict (ours / theirs)",
   setup:
-    "Dang dung `feature`. Merge `main` se conflict `app.js`. Luyen `--ours` / `--theirs` / sua tung file.",
-  goal: "Merge, chon ours/theirs hoac sua file, add, commit.",
+    "Dang dung `feature`. Merge `main` se **conflict 5 file**: `app.js`, `version.txt`, `README.txt`, `config.js`, `api.js`. Luyen `--ours` / `--theirs` / sua tung file.",
+  goal: "Merge, chon ours/theirs hoac sua tung file, add, commit.",
   commands: `
 git merge main
 
-# giu nhanh hien tai:
+# giu toan bo nhanh hien tai (feature):
 git checkout --ours .
-# hoac giu nhanh dich (theirs):
+# hoac giu toan bo nhanh dich (main = theirs):
 git checkout --theirs .
 
+# hoac sua tung file, vi du:
 git checkout app.js
 # sua, save
 git add app.js
 git commit -m "fix-conflict-app.js"
+
+# hoac sua het roi commit mot lan:
+git add .
+git commit -m "fix-conflict-new-branch"
 `,
-  check: "Khong con conflict marker. `git status` sach.",
+  check: "5 file khong con conflict marker. `git status` sach.",
   build({ work }) {
     seedApp(work);
+    write(work, "config.js", "module.exports = { env: 'base' };\n");
+    write(work, "api.js", "function fetchUser() { return { id: 0 }; }\n");
+    commitAll(work, "them config va api");
+
     git(work, ["checkout", "-b", "feature"]);
     write(work, "app.js", "function greet(n) { return 'FEATURE ' + n; }\n");
-    commitAll(work, "sua tren feature");
+    write(work, "version.txt", "2.0.0-feature\n");
+    write(work, "README.txt", "Mini app — ban feature.\n");
+    write(work, "config.js", "module.exports = { env: 'feature' };\n");
+    write(
+      work,
+      "api.js",
+      "function fetchUser() { return { id: 1, from: 'feature' }; }\n"
+    );
+    commitAll(work, "sua 5 file tren feature");
+
     git(work, ["checkout", "main"]);
     write(work, "app.js", "function greet(n) { return 'MAIN ' + n; }\n");
-    commitAll(work, "sua tren main");
+    write(work, "version.txt", "2.0.0-main\n");
+    write(work, "README.txt", "Mini app — ban main.\n");
+    write(work, "config.js", "module.exports = { env: 'main' };\n");
+    write(
+      work,
+      "api.js",
+      "function fetchUser() { return { id: 2, from: 'main' }; }\n"
+    );
+    commitAll(work, "sua 5 file tren main");
+
     git(work, ["checkout", "feature"]);
   },
 });

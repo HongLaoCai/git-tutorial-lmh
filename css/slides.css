@@ -877,6 +877,14 @@ kbd {
   vertical-align: middle;
 }
 
+.slide--demo .slide__inner {
+  width: min(1040px, calc(100% - 48px));
+}
+
+.slide--demo .demo-video {
+  max-height: min(64vh, 620px);
+}
+
 .demo-video:focus-visible {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
