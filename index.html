@@ -127,7 +127,7 @@
           <div class="toc__item"><span class="toc__num">Phần 0</span><strong>Git là gì</strong><span>Repo · commit · branch · remote</span></div>
           <div class="toc__item"><span class="toc__num">Phần A</span><strong>Vào repo &amp; xác thực</strong><span>Quyền GitLab · PAT · SSH · Clone · Demo video</span></div>
           <div class="toc__item"><span class="toc__num">Phần B</span><strong>Lệnh thường dùng</strong><span>fetch, pull, add, commit, branch, merge</span></div>
-          <div class="toc__item"><span class="toc__num">Phần C</span><strong>Tình huống 2 → 10</strong><span>Quên branch, pull kẹt, amend, conflict</span></div>
+          <div class="toc__item"><span class="toc__num">Phần C</span><strong>Tình huống 2 → 10</strong><span>Quên branch, pull kẹt, amend, conflict · Demo video</span></div>
           <div class="toc__item"><span class="toc__num">Phần D</span><strong>Đổi tên / xóa branch</strong><span>Các lệnh quản lý nhánh</span></div>
           <div class="toc__item"><span class="toc__num">Thực hành</span><strong>yarn make-example</strong><span>Sandbox từng tình huống</span></div>
         </div>
@@ -390,7 +390,7 @@ git merge branch_can_lay_code</code></pre>
       <div class="slide__inner">
         <p class="kicker">Phần B · Conflict</p>
         <h2>Xử lý conflict khi merge</h2>
-        <p class="doc-lead">Khi merge có nhiều conflict, chọn code theo từng phía rồi commit.</p>
+        <p class="doc-lead">Sandbox <code>yarn make-example conflict</code> có <strong>5 file conflict</strong>: <code>app.js</code>, <code>version.txt</code>, <code>README.txt</code>, <code>config.js</code>, <code>api.js</code>. Chọn code theo từng phía rồi commit.</p>
         <div class="case">
           <p class="case__title">Giữ code của nhánh hiện tại</p>
           <pre><code>git checkout --ours .</code></pre>
@@ -435,9 +435,34 @@ git switch -c feature-moi</code></pre>
         </div>
       </div>
     </section>
-
     <!-- 18 -->
-    <section class="slide" id="slide-18" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
+    <section class="slide slide--demo" id="slide-18" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 2: quên tạo branch">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 2 · Demo video</p>
+        <h2>Demo: Quên tạo branch</h2>
+        <p class="doc-lead">Xem thao tác tách nhánh sau khi đã code trên <code>main</code>.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 2: quên tạo branch"
+            >
+              <source src="video/example-2.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-2.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
+
+    <!-- 19 -->
+    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH3 pull không được">
       <div class="slide__inner">
         <p class="kicker">Tình huống 3</p>
         <h2>Pull không được vì có commit local</h2>
@@ -462,9 +487,34 @@ git stash pop</code></pre>
         </div>
       </div>
     </section>
+    <!-- 20 -->
+    <section class="slide slide--demo" id="slide-20" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 3: pull không được">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 3 · Demo video</p>
+        <h2>Demo: Pull không được vì có commit local</h2>
+        <p class="doc-lead">Stash / reset rồi pull, giữ được cả thay đổi local và commit remote.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 3: pull không được"
+            >
+              <source src="video/example-3.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-3.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 19 -->
-    <section class="slide" id="slide-19" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes chưa commit">
+    <!-- 21 -->
+    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes chưa commit">
       <div class="slide__inner">
         <p class="kicker">Tình huống 4 · Chưa commit</p>
         <h2>Muốn bỏ các thay đổi</h2>
@@ -482,8 +532,8 @@ git checkout tenfile.abc</code></pre>
       </div>
     </section>
 
-    <!-- 20 -->
-    <section class="slide" id="slide-20" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes đã commit">
+    <!-- 22 -->
+    <section class="slide" id="slide-22" role="region" aria-roledescription="slide" aria-label="TH4 bỏ changes đã commit">
       <div class="slide__inner">
         <p class="kicker">Tình huống 4 · Đã commit</p>
         <h2>Lấy lại nội dung file từ commit hoặc nhánh</h2>
@@ -496,9 +546,34 @@ git checkout tenfile.abc</code></pre>
         <pre><code>git checkout main -- tenfile.abc</code></pre>
       </div>
     </section>
+    <!-- 23 -->
+    <section class="slide slide--demo" id="slide-23" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 4: bỏ changes">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 4 · Demo video</p>
+        <h2>Demo: Bỏ thay đổi chưa commit hoặc lấy lại file</h2>
+        <p class="doc-lead">Discard file đang sửa, hoặc lấy lại nội dung từ commit / nhánh cũ.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 4: bỏ changes"
+            >
+              <source src="video/example-4.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-4.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 21 -->
-    <section class="slide" id="slide-21" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
+    <!-- 24 -->
+    <section class="slide" id="slide-24" role="region" aria-roledescription="slide" aria-label="TH5 commit thiếu file">
       <div class="slide__inner">
         <p class="kicker">Tình huống 5</p>
         <h2>Commit thiếu file</h2>
@@ -520,9 +595,34 @@ git commit -m "commit"</code></pre>
         <p class="callout"><strong>Quy trình này</strong>Không dùng rebase.</p>
       </div>
     </section>
+    <!-- 25 -->
+    <section class="slide slide--demo" id="slide-25" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 5: commit thiếu file">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 5 · Demo video</p>
+        <h2>Demo: Commit thiếu file</h2>
+        <p class="doc-lead">Gộp thay đổi còn thiếu vào commit vừa tạo bằng amend hoặc reset rồi commit lại.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 5: commit thiếu file"
+            >
+              <source src="video/example-5.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-5.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 22 -->
-    <section class="slide" id="slide-22" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
+    <!-- 26 -->
+    <section class="slide" id="slide-26" role="region" aria-roledescription="slide" aria-label="TH6 file gitignore">
       <div class="slide__inner">
         <p class="kicker">Tình huống 6</p>
         <h2>Lỡ commit file phải nằm trong .gitignore</h2>
@@ -551,9 +651,34 @@ git push origin main --force</code></pre>
         <p class="callout callout--danger"><strong>Cẩn thận</strong><code>push --force</code> ghi đè lịch sử trên remote. Chỉ dùng khi hiểu rõ và team đồng ý.</p>
       </div>
     </section>
+    <!-- 27 -->
+    <section class="slide slide--demo" id="slide-27" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 6: commit nhầm file gitignore">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 6 · Demo video</p>
+        <h2>Demo: Lỡ commit file phải gitignore</h2>
+        <p class="doc-lead">Gỡ <code>.env</code> khỏi commit (và khỏi lịch sử nếu đã push), rồi thêm vào <code>.gitignore</code>.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 6: commit nhầm file gitignore"
+            >
+              <source src="video/example-6.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-6.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 23 -->
-    <section class="slide" id="slide-23" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
+    <!-- 28 -->
+    <section class="slide" id="slide-28" role="region" aria-roledescription="slide" aria-label="TH7 quay lại commit cũ">
       <div class="slide__inner">
         <p class="kicker">Tình huống 7</p>
         <h2>Quay lại commit cũ</h2>
@@ -580,8 +705,8 @@ git push origin main --force</code></pre>
       </div>
     </section>
 
-    <!-- 24 -->
-    <section class="slide" id="slide-24" role="region" aria-roledescription="slide" aria-label="TH7 revert">
+    <!-- 29 -->
+    <section class="slide" id="slide-29" role="region" aria-roledescription="slide" aria-label="TH7 revert">
       <div class="slide__inner">
         <p class="kicker">Tình huống 7 · An toàn hơn</p>
         <h2>Dùng revert thay vì xóa lịch sử</h2>
@@ -594,9 +719,34 @@ git push origin main --force</code></pre>
         <p class="callout callout--tip"><strong>Khi nào chọn gì</strong>Nhánh riêng, chưa ai dựa vào: có thể reset. Nhánh dùng chung: ưu tiên revert.</p>
       </div>
     </section>
+    <!-- 30 -->
+    <section class="slide slide--demo" id="slide-30" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 7: quay lại commit cũ">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 7 · Demo video</p>
+        <h2>Demo: Quay lại commit cũ</h2>
+        <p class="doc-lead">Reset về commit A, force push, hoặc revert B nếu nhánh đang dùng chung.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 7: quay lại commit cũ"
+            >
+              <source src="video/example-7.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-7.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 25 -->
-    <section class="slide" id="slide-25" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
+    <!-- 31 -->
+    <section class="slide" id="slide-31" role="region" aria-roledescription="slide" aria-label="TH8 MR conflict">
       <div class="slide__inner">
         <p class="kicker">Tình huống 8</p>
         <h2>MR bị conflict — không merge vào main được</h2>
@@ -618,9 +768,34 @@ git push origin ten_branch</code></pre>
         <p class="callout callout--warn"><strong>Chú ý</strong>Push <code>ten_branch</code>, không phải <code>main</code>.</p>
       </div>
     </section>
+    <!-- 32 -->
+    <section class="slide slide--demo" id="slide-32" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 8: MR conflict">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 8 · Demo video</p>
+        <h2>Demo: MR bị conflict</h2>
+        <p class="doc-lead">Pull <code>main</code>, merge vào nhánh của bạn, sửa conflict, rồi push nhánh feature.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 8: MR conflict"
+            >
+              <source src="video/example-8.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-8.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 26 -->
-    <section class="slide" id="slide-26" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
+    <!-- 33 -->
+    <section class="slide" id="slide-33" role="region" aria-roledescription="slide" aria-label="TH9 chọn tính năng từ dev">
       <div class="slide__inner">
         <p class="kicker">Tình huống 9</p>
         <h2>dev nhiều tính năng — chỉ merge một phần vào main</h2>
@@ -643,9 +818,34 @@ git push origin ten_branch</code></pre>
         </div>
       </div>
     </section>
+    <!-- 34 -->
+    <section class="slide slide--demo" id="slide-34" role="region" aria-roledescription="slide" aria-label="Video demo tình huống 9: cherry-pick từ dev">
+      <div class="slide__inner">
+        <p class="kicker">Tình huống 9 · Demo video</p>
+        <h2>Demo: Chỉ lấy một phần tính năng từ dev</h2>
+        <p class="doc-lead">Tạo nhánh từ <code>main</code>, rồi cherry-pick hoặc merge đúng nhánh tính năng cần lấy.</p>
+        <figure class="video-card">
+          <div class="video-wrap">
+            <video
+              class="demo-video"
+              controls
+              playsinline
+              preload="metadata"
+              controlslist="nodownload"
+              aria-label="Video demo tình huống 9: cherry-pick từ dev"
+            >
+              <source src="video/example-9.mp4" type="video/mp4" />
+              Trình duyệt không phát được video. Mở
+              <code>video/example-9.mp4</code>.
+            </video>
+          </div>
+        </figure>
+        <p class="callout callout--tip"><strong>Gợi ý</strong>Đổi slide sẽ dừng video.</p>
+      </div>
+    </section>
 
-    <!-- 27 -->
-    <section class="slide" id="slide-27" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
+    <!-- 35 -->
+    <section class="slide" id="slide-35" role="region" aria-roledescription="slide" aria-label="TH10 sửa commit message">
       <div class="slide__inner">
         <p class="kicker">Tình huống 10</p>
         <h2>Sửa commit message vừa gõ</h2>
@@ -666,8 +866,8 @@ git commit -m "tên commit đúng"</code></pre>
       </div>
     </section>
 
-    <!-- 28 -->
-    <section class="slide" id="slide-28" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
+    <!-- 36 -->
+    <section class="slide" id="slide-36" role="region" aria-roledescription="slide" aria-label="Đổi tên và xóa branch">
       <div class="slide__inner">
         <p class="kicker">Phần D · Quản lý branch</p>
         <h2>Đổi tên và xóa branch</h2>
@@ -682,8 +882,8 @@ git commit -m "tên commit đúng"</code></pre>
       </div>
     </section>
 
-    <!-- 29 -->
-    <section class="slide slide--center" id="slide-29" role="region" aria-roledescription="slide" aria-label="Kết thúc">
+    <!-- 37 -->
+    <section class="slide slide--center" id="slide-37" role="region" aria-roledescription="slide" aria-label="Kết thúc">
       <div class="slide__inner">
         <p class="kicker">Kết thúc</p>
         <h1>Thực hành theo từng tình huống</h1>
@@ -696,7 +896,7 @@ git commit -m "tên commit đúng"</code></pre>
 
   <nav class="chrome" aria-label="Điều khiển tài liệu">
     <div class="chrome__left">
-      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 29</span>
+      <span class="chrome__counter" id="slide-counter" aria-hidden="true">1 / 37</span>
       <span class="help-hint">Phím <strong>?</strong> · Mục lục <strong>O</strong></span>
     </div>
     <div class="chrome__right">
