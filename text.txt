@@ -1,1 +1,5 @@
 text.txt
+
+/Volumes/SSKSSD/GitHub/2026/git-tutorial-lmh/text.txt
+
+tesst abcd
